@@ -13,15 +13,33 @@
 	</header>
 	<div class="container">
 		<div id="left-container" class="inner-container">
-			<section id="meal-details" class="component">
+			<section class="component">
 				<h2 class="title">Enter the meal details</h2>
+				<form class="meal-details" name="meal-details">
+					<table class="meal-inputs">
+						<tr>
+							<td class="column1">Base Meal Price: $</td>
+							<td><input class="number" type="number" placeholder="0.00" autocomplete="off"/></td>
+						</tr>
+						<tr>
+							<td class="column1">Tax Rate: %</td>
+							<td><input class="number" type="number" autocomplete="off"/></label></td>
+						</tr>
+						<tr>
+							<td class="column1">Tip Percentage: %</td>
+							<td><input class="number" type="number" autocomplete="off"/></label></td>
+						</tr>
+					</table>
+					<button>Submit</button>
+					<button>Clear</button>
+				</form>
 			</section>
 		</div>
 		<div id="right-container" class="inner-container">
-			<section id="charges" class="component">
+			<section class="component">
 				<h2 class="title">Customer Charges</h2>
 			</section>
-			<section id="earnings" class="component">
+			<section class="component">
 				<h2 class="title">My Earnings</h2>
 			</section>
 		</div>
