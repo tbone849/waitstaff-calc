@@ -1,5 +1,17 @@
+html {
+	font-family: 'Francois One', sans-serif;
+}
+
 header {
+	color: #5D5D5D;
 	text-align: center;
+	font-family: 'Fascinate Inline', cursive;
+	font-size: 2em;
+}
+
+#cent {
+	color: #00CC99;
+	font-size: 1.5em;
 }
 
 .container {
@@ -14,13 +26,15 @@ header {
 }
 
 .component {
-	border: solid 3px;
+	border: solid 5px #5D5D5D;
 	margin: 1em;
 	padding-bottom: 1em;
+	-webkit-box-shadow: 0 3px 10px 2px #858585;
+	box-shadow: 0 3px 10px 2px #858585;
 }
 
 .title {
-	border-bottom: solid 3px;
+	border-bottom: solid 3px #5D5D5D;
 	text-align: left;
 	margin: 0;
 	padding: 1em;
@@ -47,6 +61,28 @@ header {
 
 .number {
 	width: 4em;
+}
+
+button {
+	font-family: 'Francois One', sans-serif;
+	font-size: 1em;
+	padding: 0.5em;
+	border: none;
+	-webkit-border-radius: 0.75em;
+	border-radius: 0.75em;
+	cursor:pointer;
+	min-width: 6em;
+}
+
+#submit {
+	color: white;
+	background-color: #00CC99;
+}
+
+#clear {
+	background-color: white;
+	color: #00CC99;
+	border: solid 1px #00CC99;
 }
 
 
