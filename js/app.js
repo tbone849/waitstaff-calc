@@ -8,6 +8,8 @@ angular.module('waitstaffCalculator', ['ngMessages'])
     		tip: null,
     		totalCost: null
     	}
+
+    	var emptyFormCopy = angular.copy($scope.mealInfo);
 		
 
     	function calcSubtotal(mealPrice, taxRate) {
@@ -25,9 +27,20 @@ angular.module('waitstaffCalculator', ['ngMessages'])
     		return total.toFixed(2);
     	}
 
+    	function clearForm(){
+    		$scope.mealInfo.mealPrice = null;
+    		$scope.mealInfo.taxRate = null;
+    		$scope.mealInfo.tipPercentage = null;
+    	}
+
     	$scope.submit = function (){
     		$scope.mealInfo.subtotal = calcSubtotal($scope.mealInfo.mealPrice, $scope.mealInfo.taxRate);
     		$scope.mealInfo.tip = calcTip($scope.mealInfo.mealPrice, $scope.mealInfo.tipPercentage);
  			$scope.mealInfo.totalCost = calcTotalCost($scope.mealInfo.subtotal, $scope.mealInfo.tip);
+ 			clearForm();
+    	}
+
+    	$scope.clear = function (){
+    		clearForm();
     	}
 	});
