@@ -17,22 +17,22 @@
 		<div id="left-container" class="inner-container">
 			<section class="component">
 				<h2 class="title">Enter the meal details</h2>
-				<form class="meal-details" name="meal-details">
+				<form class="meal-details" name="mealDetails" ng-submit="submit()">
 					<table class="component-table">
 						<tr>
 							<td class="column1">Base Meal Price: $</td>
-							<td><input class="number" type="number" placeholder="0.00" autocomplete="off" min="0.00" ng-model="mealInfo.mealPrice"/></td>
+							<td><input class="number" type="number" placeholder="0.00" autocomplete="off" min="0.00" ng-model="mealInfo.mealPrice" required/></td>
 						</tr>
 						<tr>
 							<td class="column1">Tax Rate: %</td>
-							<td><input class="number" min="0" type="number" autocomplete="off" ng-model="mealInfo.taxRate"/></label></td>
+							<td><input class="number" min="0" max="15" type="number" autocomplete="off" ng-model="mealInfo.taxRate" required/></label></td>
 						</tr>
 						<tr>
 							<td class="column1">Tip Percentage: %</td>
-							<td><input class="number" min="0" type="number" autocomplete="off" ng-model="mealInfo.tipPercentage"/></label></td>
+							<td><input class="number" min="0" type="number" autocomplete="off" ng-model="mealInfo.tipPercentage" required/></label></td>
 						</tr>
 					</table>
-					<button id="submit" ng-click="submit()">Submit</button>
+					<button id="submit" type="submit">Submit</button>
 					<button id="clear" ng-click="clear()">Clear</button>
 				</form>
 			</section>
@@ -60,15 +60,15 @@
 				<table class="component-table">
 					<tr>
 						<td class="column1">Tip Total: </td>
-						<td>${{tiptotal}}</td>
+						<td>${{mealInfo.tipTotal}}</td>
 					</tr>
 					<tr>
 						<td class="column1">Meal Count: </td>
-						<td>{{mealcount}}</td>
+						<td>{{mealInfo.mealCount}}</td>
 					</tr>
 					<tr>
 						<td class="column1">Avg. Tip/Meal: </td>
-						<td>${{avgTip}}</td>
+						<td>${{mealInfo.avgTip}}</td>
 					</tr>
 				</table>
 			</section>

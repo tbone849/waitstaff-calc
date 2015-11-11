@@ -6,10 +6,13 @@ angular.module('waitstaffCalculator', ['ngMessages'])
     		tipPercentage: null,
     		subtotal: null,
     		tip: null,
-    		totalCost: null
+    		totalCost: null,
+    		tipTotal: null,
+    		mealCount: 0,
+    		avgTip: null
     	}
 
-    	var emptyFormCopy = angular.copy($scope.mealInfo);
+    	var emptyAppCopy = angular.copy($scope.mealInfo);
 		
 
     	function calcSubtotal(mealPrice, taxRate) {
@@ -27,6 +30,16 @@ angular.module('waitstaffCalculator', ['ngMessages'])
     		return total.toFixed(2);
     	}
 
+    	function calcTipTotal(tipTotal, tip){
+    		tipTotal = tipTotal*1 + tip*1;
+    		return tipTotal.toFixed(2);
+    	}
+
+    	function calcAvgTip(mealCount, tipTotal){
+    		var avgTip = tipTotal/mealCount;
+    		return avgTip.toFixed(2);
+    	}
+
     	function clearForm(){
     		$scope.mealInfo.mealPrice = null;
     		$scope.mealInfo.taxRate = null;
@@ -34,13 +47,22 @@ angular.module('waitstaffCalculator', ['ngMessages'])
     	}
 
     	$scope.submit = function (){
-    		$scope.mealInfo.subtotal = calcSubtotal($scope.mealInfo.mealPrice, $scope.mealInfo.taxRate);
-    		$scope.mealInfo.tip = calcTip($scope.mealInfo.mealPrice, $scope.mealInfo.tipPercentage);
- 			$scope.mealInfo.totalCost = calcTotalCost($scope.mealInfo.subtotal, $scope.mealInfo.tip);
- 			clearForm();
+    		if($scope.mealDetails.$valid && $scope.mealDetails.$submitted){
+    			$scope.mealInfo.mealCount++;
+    			$scope.mealInfo.subtotal = calcSubtotal($scope.mealInfo.mealPrice, $scope.mealInfo.taxRate);
+    			$scope.mealInfo.tip = calcTip($scope.mealInfo.mealPrice, $scope.mealInfo.tipPercentage);
+ 				$scope.mealInfo.totalCost = calcTotalCost($scope.mealInfo.subtotal, $scope.mealInfo.tip);
+ 				$scope.mealInfo.tipTotal = calcTipTotal($scope.mealInfo.tipTotal, $scope.mealInfo.tip);
+ 				$scope.mealInfo.avgTip = calcAvgTip($scope.mealInfo.mealCount, $scope.mealInfo.tipTotal);
+ 				clearForm();
+	 		}
     	}
 
     	$scope.clear = function (){
     		clearForm();
+    	}
+
+    	$scope.resetApp = function(){
+    		$scope.mealInfo = angular.copy(emptyAppCopy);
     	}
 	});
