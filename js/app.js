@@ -55,6 +55,7 @@ angular.module('waitstaffCalculator', ['ngMessages'])
  				$scope.mealInfo.tipTotal = calcTipTotal($scope.mealInfo.tipTotal, $scope.mealInfo.tip);
  				$scope.mealInfo.avgTip = calcAvgTip($scope.mealInfo.mealCount, $scope.mealInfo.tipTotal);
  				clearForm();
+ 				$scope.mealDetails.$submitted = false;
 	 		}
     	}
 
