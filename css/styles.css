@@ -9,6 +9,10 @@ header {
 	font-size: 2em;
 }
 
+header h1 {
+	margin: 0;
+}
+
 #cent {
 	color: #00CC99;
 	font-size: 1.5em;
@@ -79,10 +83,17 @@ button {
 	background-color: #00CC99;
 }
 
-#clear {
+.clear {
 	background-color: white;
 	color: #00CC99;
 	border: solid 1px #00CC99;
 }
+
+#reset {
+	float: right;
+	margin: 1em 1em 0 0;
+}
+
+
 
 
