@@ -48,7 +48,7 @@ header {
 	width: 40%;
 }
 
-.meal-inputs {
+.component-table {
 	text-align: left;
 	width: 80%;
 	margin: 1.5em auto;
@@ -56,7 +56,7 @@ header {
 
 .column1 {
 	text-align: right;
-	width: 60%;
+	width: 50%;
 }
 
 .number {

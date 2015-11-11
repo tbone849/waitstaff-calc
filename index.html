@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="waitstaff-calculator">
 <head>
 	<meta charset="UTF-8">
 	<title>Waitstaff Calculator</title>
@@ -17,7 +17,7 @@
 			<section class="component">
 				<h2 class="title">Enter the meal details</h2>
 				<form class="meal-details" name="meal-details">
-					<table class="meal-inputs">
+					<table class="component-table">
 						<tr>
 							<td class="column1">Base Meal Price: $</td>
 							<td><input class="number" type="number" placeholder="0.00" autocomplete="off"/></td>
@@ -39,9 +39,37 @@
 		<div id="right-container" class="inner-container">
 			<section class="component">
 				<h2 class="title">Customer Charges</h2>
+				<table class="component-table">
+					<tr>
+						<td class="column1">Subtotal: </td>
+						<td>{{subtotal}}</td>
+					</tr>
+					<tr>
+						<td class="column1">Tip: </td>
+						<td>{{tip}}</td>
+					</tr>
+					<tr>
+						<td class="column1">Total: </td>
+						<td>{{total}}</td>
+					</tr>
+				</table>
 			</section>
 			<section class="component">
 				<h2 class="title">My Earnings</h2>
+				<table class="component-table">
+					<tr>
+						<td class="column1">Tip Total: </td>
+						<td>{{tiptotal}}</td>
+					</tr>
+					<tr>
+						<td class="column1">Meal Count: </td>
+						<td>{{mealcount}}</td>
+					</tr>
+					<tr>
+						<td class="column1">Avg. Tip/Meal: </td>
+						<td>{{avgTip}}</td>
+					</tr>
+				</table>
 			</section>
 		</div>
 	</div>
