@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="waitstaff-calculator">
+<html lang="en" ng-app="waitstaffCalculator">
 <head>
 	<meta charset="UTF-8">
 	<title>Waitstaff Calculator</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-messages.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Fascinate+Inline|Francois+One' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
@@ -12,7 +13,7 @@
 	<header>
 		<h1>Waitstaff <span id="cent">&cent;</span>alculator</h1>
 	</header>
-	<div class="container">
+	<div class="container" ng-controller="mealDetailsCtrl">
 		<div id="left-container" class="inner-container">
 			<section class="component">
 				<h2 class="title">Enter the meal details</h2>
@@ -20,18 +21,18 @@
 					<table class="component-table">
 						<tr>
 							<td class="column1">Base Meal Price: $</td>
-							<td><input class="number" type="number" placeholder="0.00" autocomplete="off"/></td>
+							<td><input class="number" type="number" placeholder="0.00" autocomplete="off" min="0.00" ng-model="mealInfo.mealPrice"/></td>
 						</tr>
 						<tr>
 							<td class="column1">Tax Rate: %</td>
-							<td><input class="number" type="number" autocomplete="off"/></label></td>
+							<td><input class="number" min="0" type="number" autocomplete="off" ng-model="mealInfo.taxRate"/></label></td>
 						</tr>
 						<tr>
 							<td class="column1">Tip Percentage: %</td>
-							<td><input class="number" type="number" autocomplete="off"/></label></td>
+							<td><input class="number" min="0" type="number" autocomplete="off" ng-model="mealInfo.tipPercentage"/></label></td>
 						</tr>
 					</table>
-					<button id="submit">Submit</button>
+					<button id="submit" ng-click="submit()">Submit</button>
 					<button id="clear">Clear</button>
 				</form>
 			</section>
@@ -42,15 +43,15 @@
 				<table class="component-table">
 					<tr>
 						<td class="column1">Subtotal: </td>
-						<td>{{subtotal}}</td>
+						<td>${{mealInfo.subtotal}}</td>
 					</tr>
 					<tr>
 						<td class="column1">Tip: </td>
-						<td>{{tip}}</td>
+						<td>${{mealInfo.tip}}</td>
 					</tr>
 					<tr>
 						<td class="column1">Total: </td>
-						<td>{{total}}</td>
+						<td>${{mealInfo.totalCost}}</td>
 					</tr>
 				</table>
 			</section>
@@ -59,7 +60,7 @@
 				<table class="component-table">
 					<tr>
 						<td class="column1">Tip Total: </td>
-						<td>{{tiptotal}}</td>
+						<td>${{tiptotal}}</td>
 					</tr>
 					<tr>
 						<td class="column1">Meal Count: </td>
@@ -67,7 +68,7 @@
 					</tr>
 					<tr>
 						<td class="column1">Avg. Tip/Meal: </td>
-						<td>{{avgTip}}</td>
+						<td>${{avgTip}}</td>
 					</tr>
 				</table>
 			</section>
