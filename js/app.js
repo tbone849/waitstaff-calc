@@ -1,4 +1,13 @@
-angular.module('waitstaffCalculator', ['ngMessages'])
+angular.module('waitstaffCalculator', ['ngMessages', 'ngRoute'])
+    .config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/home', {
+            templateUrl : 'index.html'
+        }).when('/new-meal', {
+            templateUrl : 'new-meal.html'
+        }).when('/my-earnings', {
+            templateUrl : 'my-earnings.html'
+        }).otherwise('/');
+    }])
     .controller('mealDetailsCtrl', function($scope) {
     	$scope.mealInfo = {
     		mealPrice: null,
@@ -44,6 +53,7 @@ angular.module('waitstaffCalculator', ['ngMessages'])
     		$scope.mealInfo.mealPrice = null;
     		$scope.mealInfo.taxRate = null;
     		$scope.mealInfo.tipPercentage = null;
+            $scope.mealDetails.$submitted = false;
     	}
 
     	$scope.submit = function (){
@@ -55,7 +65,6 @@ angular.module('waitstaffCalculator', ['ngMessages'])
  				$scope.mealInfo.tipTotal = calcTipTotal($scope.mealInfo.tipTotal, $scope.mealInfo.tip);
  				$scope.mealInfo.avgTip = calcAvgTip($scope.mealInfo.mealCount, $scope.mealInfo.tipTotal);
  				clearForm();
- 				$scope.mealDetails.$submitted = false;
 	 		}
     	}
 

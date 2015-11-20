@@ -1,0 +1,57 @@
+<section class="component">
+	<h2 class="title">Enter the meal details</h2>
+	<form class="meal-details" name="mealDetails" novalidate ng-submit="submit()">
+		<table class="component-table">
+			<tr>
+				<td class="column1">Base Meal Price: $</td>
+				<td>
+					<input name="mealPrice" class="number" type="number" placeholder="0.00" autocomplete="off" min="0" ng-model="mealInfo.mealPrice" required/>
+					<div class="errorDiv" ng-if="mealDetails.$submitted" ng-messages="mealDetails.mealPrice.$error">
+						<span class="error" ng-message="required">Field is required!</span>
+						<span class="error" ng-message="min">Must be 0 or higher.</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="column1">Tax Rate: %</td>
+				<td>
+					<input name="taxRate" class="number" min="0" max="15" type="number" autocomplete="off" ng-model="mealInfo.taxRate" required/></label>
+					<div class="errorDiv" ng-if="mealDetails.$submitted" ng-messages="mealDetails.taxRate.$error">
+						<span class="error" ng-message="required">Field is required!</span>
+						<span class="error" ng-message="min">Must be 0 or higher.</span>
+						<span class="error" ng-message="max">Must be 15 or less.</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="column1">Tip Percentage: %</td>
+				<td>
+					<input name="tipPercentage" class="number" min="0" type="number" autocomplete="off" ng-model="mealInfo.tipPercentage" required/></label>
+					<div class="errorDiv" ng-if="mealDetails.$submitted" ng-messages="mealDetails.tipPercentage.$error">
+						<span class="error" ng-message="required">Field is required!</span>
+						<span class="error" ng-message="min">Must be 0 or higher.</span>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<button id="submit" type="submit">Submit</button>
+		<button class="clear" ng-click="clear()">Clear</button>
+	</form>
+</section>
+<section class="component">
+	<h2 class="title">Customer Charges</h2>
+	<table class="component-table">
+		<tr>
+			<td class="column1">Subtotal: </td>
+			<td>${{mealInfo.subtotal}}</td>
+		</tr>
+		<tr>
+			<td class="column1">Tip: </td>
+			<td>${{mealInfo.tip}}</td>
+		</tr>
+		<tr>
+			<td class="column1">Total: </td>
+			<td>${{mealInfo.totalCost}}</td>
+		</tr>
+	</table>
+</section>

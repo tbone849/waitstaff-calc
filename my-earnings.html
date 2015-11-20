@@ -1,0 +1,18 @@
+<section class="component">
+	<h2 class="title">My Earnings</h2>
+	<table class="component-table">
+		<tr>
+			<td class="column1">Tip Total: </td>
+			<td>${{mealInfo.tipTotal}}</td>
+		</tr>
+		<tr>
+			<td class="column1">Meal Count: </td>
+			<td>{{mealInfo.mealCount}}</td>
+		</tr>
+		<tr>
+			<td class="column1">Avg. Tip/Meal: </td>
+			<td>${{mealInfo.avgTip}}</td>
+		</tr>
+	</table>
+</section>
+<button id="reset" class="clear" ng-click="resetApp()">Reset</button>
