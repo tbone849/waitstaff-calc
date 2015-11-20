@@ -1,4 +1,4 @@
-angular.module('waitstaffCalculator', ['ngMessages', 'ngRoute'])
+angular.module('waitstaffCalculator', ['ngMessages', 'ngRoute', 'ngAnimate'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {
             templateUrl : 'home.html',
