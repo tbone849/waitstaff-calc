@@ -2,6 +2,8 @@ angular.module('waitstaffCalculator', ['ngMessages', 'ngRoute', 'ngAnimate'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {
             templateUrl : 'home.html',
+        }).when('/home', {
+            templateUrl : 'home.html',
         }).when('/new-meal', {
             templateUrl : 'new-meal.html',
             controller : 'mealDetailsCtrl'
