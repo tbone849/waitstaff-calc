@@ -47,6 +47,11 @@ header h1 {
 	box-shadow: 0 3px 10px 2px #858585;
 }
 
+.component p {
+	text-align: left;
+	padding: 1em;
+}
+
 .title {
 	border-bottom: solid 3px #5D5D5D;
 	text-align: left;

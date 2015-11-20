@@ -1,11 +1,13 @@
 angular.module('waitstaffCalculator', ['ngMessages', 'ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/home', {
-            templateUrl : 'index.html'
+        $routeProvider.when('/', {
+            templateUrl : 'home.html',
         }).when('/new-meal', {
-            templateUrl : 'new-meal.html'
+            templateUrl : 'new-meal.html',
+            controller : 'mealDetailsCtrl'
         }).when('/my-earnings', {
-            templateUrl : 'my-earnings.html'
+            templateUrl : 'my-earnings.html',
+            controller : 'mealDetailsCtrl'
         }).otherwise('/');
     }])
     .controller('mealDetailsCtrl', function($scope) {
