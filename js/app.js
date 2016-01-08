@@ -12,21 +12,28 @@ angular.module('waitstaffCalculator', ['ngMessages', 'ngRoute', 'ngAnimate'])
             controller : 'mealDetailsCtrl'
         }).otherwise('/');
     }])
-    .controller('mealDetailsCtrl', function($scope) {
-    	$scope.mealInfo = {
-    		mealPrice: null,
-    		taxRate: null,
-    		tipPercentage: null,
-    		subtotal: null,
-    		tip: null,
-    		totalCost: null,
-    		tipTotal: null,
-    		mealCount: 0,
-    		avgTip: null
-    	}
+    .factory('mealDetailsFactory', function(){
+        var data = {
+            mealPrice: null,
+            taxRate: null,
+            tipPercentage: null,
+            subtotal: null,
+            tip: null,
+            totalCost: null,
+            tipTotal: null,
+            mealCount: 0,
+            avgTip: null
+        };
 
-    	var emptyAppCopy = angular.copy($scope.mealInfo);
-		
+        var emptyAppCopy = angular.copy(data);
+
+        return {
+            data: data,
+            emptyAppCopy: emptyAppCopy
+        };
+    })
+    .controller('mealDetailsCtrl', function($scope, mealDetailsFactory) {
+    	$scope.mealInfo = mealDetailsFactory.data;
 
     	function calcSubtotal(mealPrice, taxRate) {
     		var subtotal = mealPrice + (mealPrice * (taxRate/100));
@@ -77,6 +84,7 @@ angular.module('waitstaffCalculator', ['ngMessages', 'ngRoute', 'ngAnimate'])
     	}
 
     	$scope.resetApp = function(){
-    		$scope.mealInfo = angular.copy(emptyAppCopy);
+    		$scope.mealInfo = angular.copy(mealDetailsFactory.emptyAppCopy);
+            mealDetailsFactory.data = angular.copy(mealDetailsFactory.emptyAppCopy);
     	}
 	});
